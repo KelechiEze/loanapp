@@ -1,5 +1,4 @@
 /* Hero Section with Diagonal Blue Overlay */
-
 .hero {
   position: relative;
   isolation: isolate;
@@ -8,7 +7,6 @@
   min-height: 80vh;
   overflow: hidden;
 }
-
 
 /* Background Image Slider */
 .hero-bg-slider {
@@ -26,8 +24,14 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1.5s ease-in-out;
   animation: imageScale 20s ease-in-out infinite;
+}
+
+/* First image is immediately visible on page load */
+.hero-bg-image.first-load {
+  opacity: 0.45 !important;
+  transition: none;
 }
 
 .hero-bg-image.active {

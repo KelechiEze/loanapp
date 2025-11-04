@@ -4,21 +4,30 @@ import "./Hero.css";
 
 const Hero: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
   
   // Background slider images - add your actual image paths here
   const backgroundImages = [
     "/server.jpg",
-     "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1920&q=80",
+    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1920&q=80",
     "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80",
     "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=80",
   ];
 
   useEffect(() => {
+    // Mark first load as complete after component mounts
+    const timer = setTimeout(() => {
+      setIsFirstLoad(false);
+    }, 100);
+
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
     }, 5000); // Change image every 5 seconds
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
   }, [backgroundImages.length]);
 
   return (
@@ -28,7 +37,7 @@ const Hero: React.FC = () => {
         {backgroundImages.map((image, index) => (
           <div
             key={index}
-            className={`hero-bg-image ${index === currentImageIndex ? 'active' : ''}`}
+            className={`hero-bg-image ${index === currentImageIndex ? 'active' : ''} ${index === 0 && isFirstLoad ? 'first-load' : ''}`}
             style={{ backgroundImage: `url(${image})` }}
           />
         ))}
