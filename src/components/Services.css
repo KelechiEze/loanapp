@@ -1,0 +1,139 @@
+.services {
+  padding: 100px 24px;
+  background: hsl(var(--primary));
+  position: relative;
+  overflow: hidden;
+}
+
+.services-bg-shape {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: hsla(var(--primary-light) / 0.1);
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.services-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.services-badge {
+  display: inline-block;
+  background: hsla(var(--background) / 0.95);
+  color: hsl(var(--primary));
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.services-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: hsl(var(--primary-foreground));
+  line-height: 1.2;
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: hsl(var(--background));
+  border-radius: var(--radius);
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px hsla(var(--foreground) / 0.1);
+  transition: all 300ms ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: hsl(var(--primary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px hsla(var(--foreground) / 0.15);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background: hsl(var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--secondary-foreground));
+  margin-bottom: 24px;
+  transition: transform 300ms ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.service-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: hsl(var(--secondary));
+  margin: 0 0 12px 0;
+}
+
+.service-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: hsl(var(--muted-foreground));
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .services {
+    padding: 60px 20px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 30px 24px;
+  }
+}

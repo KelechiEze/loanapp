@@ -1,0 +1,268 @@
+/* HEADER STYLES */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid hsl(214 25% 88%);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header-inner {
+  max-width: 100%;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.header-logo {
+  background: hsl(210 100% 50%);
+  color: white;
+  padding: 0.625rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+}
+
+.header-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  color: hsl(215 25% 15%);
+}
+
+.header-brand-line {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.header-bold {
+  font-weight: 700;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: hsl(215 25% 15%);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.header-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: hsl(210 100% 50%);
+  transition: width 0.3s ease;
+}
+
+.header-link:hover {
+  color: hsl(210 100% 50%);
+}
+
+.header-link:hover::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-signin {
+  background: hsl(210 100% 50%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.header-signin:hover {
+  background: hsl(210 100% 40%);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* HAMBURGER BUTTON */
+.header-burger {
+  display: none;
+  border: none;
+  background: transparent;
+  padding: 0.5rem;
+  color: hsl(215 25% 15%);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.header-burger:hover {
+  color: hsl(210 100% 50%);
+}
+
+/* FIXED MOBILE MENU */
+.header-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2rem 2rem;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-20px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.header-mobile.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.header-mobile-link {
+  display: block;
+  padding: 1rem;
+  color: hsl(215 25% 15%);
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  margin-bottom: 0.5rem;
+}
+
+.header-mobile-link:hover {
+  background: hsl(210 15% 96%);
+  color: hsl(210 100% 50%);
+  transform: translateX(8px);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 800px) {
+  .header-inner {
+    grid-template-columns: 1fr auto;
+    padding: 1rem 1.25rem;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  /* Hide desktop sign in button on mobile */
+  .header-actions .desktop-signin {
+    display: none;
+  }
+
+  /* Show mobile sign in button */
+  .header-actions .mobile-signin {
+    display: inline-block;
+  }
+
+  .header-burger {
+    display: flex;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  /* Adjust mobile sign in button size for mobile */
+  .header-actions .mobile-signin {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0.75rem 1rem;
+  }
+
+  .header-mobile {
+    padding: 5rem 1.5rem 1.5rem;
+  }
+
+  .header-mobile-link {
+    font-size: 1rem;
+    padding: 0.875rem;
+  }
+
+  /* Further adjust mobile sign in button for very small screens */
+  .header-actions .mobile-signin {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.65rem;
+  }
+
+  .header-actions {
+    gap: 0.375rem;
+  }
+}
+
+/* Desktop styles - hide mobile sign in button */
+@media (min-width: 801px) {
+  .header-actions .mobile-signin {
+    display: none;
+  }
+
+  .header-actions .desktop-signin {
+    display: inline-block;
+  }
+}

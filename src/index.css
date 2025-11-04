@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 210 100% 40%;
+    --primary-light: 210 100% 60%;
+
+    --secondary: 210 15% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 15% 96%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 88%;
+    --input: 214 25% 88%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 30% 12%;
+    --foreground: 0 0% 98%;
+
+    --card: 215 25% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 215 25% 15%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 210 100% 40%;
+    --primary-light: 210 100% 60%;
+
+    --secondary: 210 15% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 20% 20%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 25%;
+    --input: 215 20% 25%;
+    --ring: 210 100% 50%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Mobile responsiveness fixes */
+  img, video, canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Remove default link styles */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Remove default button styles */
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Ensure sections don't overflow */
+  section {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Main container */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding: 0 2rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1200px;
+    }
+  }
+}
+
+@layer utilities {
+  /* Hide horizontal scrollbar while keeping functionality */
+  .no-horizontal-scroll {
+    overflow-x: hidden;
+  }
+
+  /* Full width container */
+  .full-width {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Prevent text selection */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Smooth transitions */
+  .smooth-transition {
+    transition: all 0.3s ease;
+  }
+}
+
+/* Media queries for screens less than 800px */
+@media (max-width: 800px) {
+  /* Base mobile adjustments */
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  /* Image adjustments for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent horizontal scrolling in all sections */
+  section, div, header, footer, main, article, aside {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Container padding for mobile */
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Additional safety for very small screens */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix for Safari mobile click delays */
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary-dark));
+}
